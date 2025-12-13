@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Réalisations | NovaWeb Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Style CSS identique à la page d'accueil */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            line-height: 1.6;
+        }
+        
+        /* Header moderne européen */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px 0;
+        }
+        
+        .site span {
+            font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #07D0D7;
+            letter-spacing: -0.5px;
+        }
+        
+        .site p {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+            font-weight: 400;
+        }
+        
+        /* Navigation améliorée */
+        .navbar {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            color: #212121;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-toggle:hover {
+            background-color: rgba(7, 208, 215, 0.1);
+        }
+        
+        .mobile-icons {
+            display: none;
+            gap: 15px;
+            margin-left: 15px;
+        }
+        
+        .mobile-icons a {
+            color: #07D0D7;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        
+        .mobile-icons a:hover {
+            color: #05a8ad;
+        }
+        
+        .menu ul {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .menu ul li {
+            list-style: none;
+        }
+        
+        .menu ul li a {
+            text-decoration: none;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #212121;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .menu ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #07D0D7;
+            transition: width 0.3s ease;
+        }
+        
+        .menu ul li a:hover {
+            color: #07D0D7;
+        }
+        
+        .menu ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .reseau-sociaux {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .reseau-sociaux a {
+            color: #07D0D7;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .reseau-sociaux a:hover {
+            color: white;
+            background-color: #07D0D7;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(7, 208, 215, 0.3);
+        }
+        
+        /* Section Hero moderne */
+        .hero {
+            display: flex;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 60px auto;
+            gap: 80px;
+        }
+        
+        .about {
+            flex: 1;
+        }
+        
+        .about h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #07D0D7;
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .about p {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #444;
+            line-height: 1.7;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .photo {
+            flex: 1;
+        }
+        
+        .photo img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s ease;
+        }
+        
+        .photo img:hover {
+            transform: translateY(-10px);
+        }
+        
+        .plus_sur_moi {
+            padding: 15px 35px;
+            width: fit-content;
+            background-color: #07D0D7;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 2px solid #07D0D7;
+            box-shadow: 0 5px 15px rgba(7, 208, 215, 0.2);
+        }
+        
+        .plus_sur_moi:hover {
+            background-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(7, 208, 215, 0.3);
+        }
+        
+        .plus_sur_moi a {
+            text-decoration: none;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: white;
+            font-weight: 700;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .plus_sur_moi:hover a {
+            color: #07D0D7;
+        }
+        
+        /* Section Réalisations améliorée */
+        .details-projets {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto;
+        }
+        
+        .details-projets h2 {
+            font-size: 36px;
+            color: #212121;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .details-projets > p {
+            color: #666;
+            margin-bottom: 50px;
+            text-align: center;
+            max-width: 800px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Styles pour les projets */
+        .projet-association, .e-commerce, .projet-blog {
+            background-color: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            width: 100%;
+            border-left: 5px solid #07D0D7;
+        }
+        
+        .projet-association:hover, .e-commerce:hover, .projet-blog:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .projet-association span, .e-commerce span, .projet-blog span {
+            display: block;
+            font-size: 26px;
+            color: #07D0D7;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .projet-association b, .e-commerce b, .projet-blog b {
+            display: inline-block;
+            color: #212121;
+            font-size: 18px;
+            margin: 20px 0 10px;
+        }
+        
+        .projet-association p, .e-commerce p, .projet-blog p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        .projet-association ul {
+            margin: 15px 0 20px 20px;
+            color: #555;
+        }
+        
+        .projet-association ul li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+        }
+        
+        /* Boutons des projets */
+        .projet-association a, .e-commerce a, .projet-blog a {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: #07D0D7;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            border: 2px solid #07D0D7;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        .projet-association a:hover, .e-commerce a:hover, .projet-blog a:hover {
+            background-color: transparent;
+            color: #07D0D7;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(7, 208, 215, 0.25);
+        }
+        
+        /* Images des projets */
+        .projet-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eee;
+        }
+        
+        /* Footer moderne */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 60px 20px;
+            margin-top: 100px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        footer div {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        footer a {
+            color: #07D0D7;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 25px;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: #5ce1e6;
+            text-decoration: underline;
+        }
+        
+        footer p {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #ccc;
+        }
+        
+        .footer-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .footer-icons a {
+            color: #07D0D7;
+            font-size: 22px;
+            margin-bottom: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        
+        .footer-icons a:hover {
+            background-color: #07D0D7;
+            color: #1a1a1a;
+            transform: translateY(-5px);
+            text-decoration: none;
+        }
+        
+        /* Menu mobile amélioré */
+        .menu {
+            position: relative;
+        }
+        
+        @media (max-width: 1024px) {
+            header, .hero, .details-projets {
+                width: 95%;
+            }
+            
+            .hero {
+                gap: 50px;
+            }
+            
+            .about h1 {
+                font-size: 36px;
+            }
+            
+            .projet-association, .e-commerce, .projet-blog {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Header mobile avec icônes à côté du menu hamburger */
+            header {
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 20px auto;
+                padding: 15px;
+                width: 100%;
+                position: relative;
+            }
+            
+            .site {
+                flex: 1;
+            }
+            
+            .site span {
+                font-size: 26px;
+            }
+            
+            .site p {
+                font-size: 13px;
+            }
+            
+            .menu-toggle {
+                display: block;
+                order: 2;
+            }
+            
+            .mobile-icons {
+                display: flex;
+                order: 3;
+                margin-left: 10px;
+            }
+            
+            .reseau-sociaux {
+                display: none;
+            }
+            
+            /* Menu mobile */
+            .menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+                transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+                z-index: 1000;
+                padding-top: 100px;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .menu.active {
+                right: 0;
+            }
+            
+            .menu ul {
+                flex-direction: column;
+                gap: 0;
+                padding: 0 30px;
+            }
+            
+            .menu ul li {
+                margin-bottom: 25px;
+            }
+            
+            .menu ul li a {
+                font-size: 18px;
+                display: block;
+                padding: 12px 0;
+            }
+            
+            .menu ul li a::after {
+                display: none;
+            }
+            
+            /* Hero section mobile */
+            .hero {
+                flex-direction: column-reverse;
+                gap: 40px;
+                text-align: center;
+                margin: 40px auto;
+                width: 95%;
+            }
+            
+            .photo {
+                max-width: 450px;
+                width: 100%;
+            }
+            
+            .about h1 {
+                font-size: 32px;
+            }
+            
+            .about p {
+                font-size: 17px;
+            }
+            
+            .plus_sur_moi {
+                margin: 0 auto;
+            }
+            
+            /* Réalisations mobile */
+            .details-projets {
+                width: 95%;
+                margin: 60px auto;
+            }
+            
+            .details-projets h2 {
+                font-size: 32px;
+            }
+            
+            .projet-association, .e-commerce, .projet-blog {
+                padding: 25px;
+            }
+            
+            .projet-association span, .e-commerce span, .projet-blog span {
+                font-size: 22px;
+            }
+            
+            .projet-image {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site span {
+                font-size: 22px;
+            }
+            
+            .about h1 {
+                font-size: 28px;
+            }
+            
+            .about p {
+                font-size: 16px;
+            }
+            
+            .details-projets h2 {
+                font-size: 28px;
+            }
+            
+            .projet-association span, .e-commerce span, .projet-blog span {
+                font-size: 20px;
+            }
+            
+            .menu {
+                width: 100%;
+            }
+            
+            .plus_sur_moi {
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .projet-association a, .e-commerce a, .projet-blog a {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .projet-association, .e-commerce, .projet-blog {
+                padding: 20px;
+            }
+        }
+        
+        /* Overlay pour menu mobile */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 999;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Style pour images manquantes */
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #07D0D7 0%, #05a8ad 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            border-radius: 12px;
+        }
+        
+        .projet-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+            border-radius: 12px;
+        }
+        
+        /* Section retour aux projets */
+        .retour-projets {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        
+        .retour-projets a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: #07D0D7;
+            text-decoration: none;
+            font-weight: 700;
+            border: 2px solid #07D0D7;
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            font-size: 16px;
+        }
+        
+        .retour-projets a:hover {
+            background-color: #07D0D7;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(7, 208, 215, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="site">
+            <span>NovaWeb Labs</span>
+            <p>Création de sites web uniques, sur mesure et fonctionnels</p>
+        </div>
+        
+        <div class="navbar">
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            
+            <!-- Icônes sociales à côté du menu hamburger sur mobile -->
+            <div class="mobile-icons">
+                <a href="https://www.facebook.com/share/17vHE4uwJL/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/malomon-araffath-alayde-52a611354" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            
+            <nav class="menu" id="mainMenu">
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="about.html">À Propos</a></li>
+                    <li><a href="projets.html">Réalisations</a></li>
+                    <li><a href="#bas">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="reseau-sociaux">
+            <a href="https://www.facebook.com/share/17vHE4uwJL/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/malomon-araffath-alayde-52a611354" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Overlay pour fermer le menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    
+    <section class="hero">
+        <div class="about fade-in">
+            <h1>À Propos de moi</h1>
+            <p>
+                <strong>Développeur web Full-Stack passionné</strong>, je conçois des sites modernes, performants et entièrement sur mesure, adaptés à tous types de projets.
+                Je crée une présence en ligne claire, professionnelle et parfaitement alignée avec vos besoins.
+                Mon objectif: transformer vos idées en expériences digitales impactantes et accessibles à tous.
+            </p>
+            <div class="plus_sur_moi">
+                <a href="about.html">En savoir plus sur moi</a>
+            </div>
+        </div>
+        <div class="photo fade-in">
+            <!-- Image de profil personnelle -->
+            <img src="dossier_images/image.jpg" alt="Malomon A. Alayde - Développeur web Full-Stack">
+        </div>
+    </section>
+    
+    <main>
+        <section class="details-projets">
+            <h2 class="fade-in">Mes réalisations</h2>
+            <p class="fade-in">
+                Sur cette page, je vous présente quelques projets récents que j'ai conçus avec soin. 
+                Chaque site reflète une approche personnalisée, axée sur la simplicité, la performance et l'impact visuel.
+            </p>
+            
+            <div class="projet-association fade-in">
+                <img src="dossier_images/yatchegbo.jpeg" alt="Association Ya Tchegbo" class="projet-image">
+                <span>Association Ya Tchegbo</span>
+                <b>Description:</b>
+                <p>
+                    Création d'un site associatif clair et accessible pour l'Association Ya Tchegbo, 
+                    mettant en valeur ses actions solidaires et facilitant l'engagement des bénéficiaires et partenaires.
+                </p>
+                <a href="https://yatchegbo.vercel.app/" target="_blank">Découvrir le projet</a>
+            </div>
+            
+            <div class="projet-association fade-in">
+                <img src="dossier_images/burkina.jpg" alt="Association Burkina Humanitaire" class="projet-image">
+                <span>Association Burkina Humanitaire</span>
+                <b>Description:</b>
+                <p>
+                    Site web moderne conçu pour <strong>Burkina Humanitaire</strong>, une association
+                    engagée dans l'aide aux enfants et aux personnes les plus démunies.
+                    Le projet met en valeur leurs actions dans les domaines de <strong>l'éducation</strong>, du
+                    <strong>soutien social</strong> et de la <strong>solidarité locale.</strong>
+                </p>
+                <p>
+                    J'ai réalisé la conception du design, la structure du site et l'intégration complète,
+                    dans un style sobre et moderne.
+                </p>
+                <a href="https://burkinahumanitaire.vercel.app/" target="_blank">Découvrir le projet</a>
+            </div>
+            
+            <div class="projet-association fade-in">
+                <img src="dossier_images/icmda.jpg" alt="ICMDA" class="projet-image">
+                <span>Ideas For Changing the Mentality of Development Actors (ICMDA)</span>
+                <b>Description:</b>
+                <p>
+                    Ce projet a été réalisé pour une association engagée dans l'action humanitaire. Le site web met en valeur leurs activités,
+                    leurs projets de terrain et leurs initiatives solidaires, afin de renforcer leur visibilité et de faciliter
+                    la communication avec les partenaires et donateurs.
+                </p>
+                <a href="https://icmda.vercel.app/" target="_blank">Découvrir le projet</a>
+            </div>
+            
+            <div class="e-commerce fade-in">
+                <img src="dossier_images/sweethouse.jpeg" alt="Hawa Sweet House" class="projet-image">
+                <span>Hawa Sweet House</span>
+                <b>Description:</b>
+                <p>
+                    Création d'un site e-commerce simple et fonctionnel pour une pâtisserie artisanale. Le site permet aux clients de :
+                </p>
+                <ul>
+                    <li>découvrir les produits (bouchée à la reine, escargot, muffin, etc.)</li>
+                    <li>consulter des descriptions courtes et vendeuses</li>
+                    <li>commander facilement via WhatsApp</li>
+                </ul>
+                <b>Objectif du projet:</b>
+                <p>
+                    Mettre en avant les produits de manière claire, attrayante et accessible, tout en proposant une expérience utilisateur simple et intuitive.
+                </p>
+                <a href="https://hawasweethouse-site.vercel.app/" target="_blank">Découvrir le projet</a>
+            </div>
+            
+            <div class="projet-blog fade-in">
+                <img src="dossier_images/bons-rappels.jpg" alt="Blog de Rappels Spirituels" class="projet-image">
+                <span>Blog de Rappels Spirituels</span>
+                <b>Description:</b>
+                <p>
+                    Le blog <strong>Ô Bons Rappels</strong> a été conçu pour partager des rappels spirituels,
+                    des conseils inspirants et des enseignements accessibles à tous. À travers des articles
+                    clairs et engageants, il invite les lecteurs à réfléchir, méditer et renforcer leur foi au quotidien.
+                    Chaque publication est accompagnée de contenus visuels et d'extraits pratiques pour faciliter
+                    la lecture et la mise en application des rappels.
+                </p>
+                <p>
+                    Pour découvrir tous ces rappels spirituels et
+                    bien plus encore, je vous invite à visiter le blog
+                    en cliquant sur le lien ci-dessous:
+                </p>
+                <a href="https://m-tech-cod.github.io/bons-rappels/" target="_blank">Découvrir le projet</a>
+            </div>
+            
+            <div class="retour-projets fade-in">
+                <a href="index.html#projets">
+                    <i class="fas fa-arrow-left"></i> Retour à l'accueil
+                </a>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="bas" class="bas">
+        <div>
+            <a href="mailto:malomonaraffath@gmail.com">malomonaraffath@gmail.com</a>
+            <p>&copy; 2025 NovaWeb Labs - Un code utile, ici et au-delà</p>
+            <div class="footer-icons">
+                <a href="https://www.facebook.com/share/17vHE4uwJL/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/malomon-araffath-alayde-52a611354" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du menu mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const mainMenu = document.getElementById('mainMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        // Ouvrir/fermer le menu
+        menuToggle.addEventListener('click', () => {
+            mainMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            
+            // Changer l'icône du bouton
+            const icon = menuToggle.querySelector('i');
+            if (mainMenu.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+                document.body.style.overflow = 'hidden'; // Empêcher le défilement
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto'; // Rétablir le défilement
+            }
+        });
+        
+        // Fermer le menu en cliquant sur l'overlay
+        menuOverlay.addEventListener('click', () => {
+            mainMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Fermer le menu en cliquant sur un lien
+        const menuLinks = document.querySelectorAll('.menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            });
+        });
+        
+        // Animation au défilement
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Vérifier au chargement initial
+        window.addEventListener('load', () => {
+            fadeInOnScroll();
+            
+            // Gestion des images manquantes
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    // Remplacer l'image manquante par un placeholder
+                    const parent = this.parentElement;
+                    const altText = this.getAttribute('alt') || 'Image';
+                    
+                    if (parent.classList.contains('photo')) {
+                        // Pour la photo de profil
+                        this.style.display = 'none';
+                        parent.innerHTML = `<div class="image-placeholder">Photo de profil</div>`;
+                    } else if (parent.classList.contains('projet-association') || 
+                               parent.classList.contains('e-commerce') || 
+                               parent.classList.contains('projet-blog')) {
+                        // Pour les images de projets
+                        this.style.display = 'none';
+                        const placeholder = document.createElement('div');
+                        placeholder.className = 'projet-placeholder';
+                        placeholder.textContent = altText;
+                        parent.insertBefore(placeholder, parent.querySelector('span'));
+                    }
+                });
+            });
+        });
+        
+        // Vérifier au défilement
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Correction du lien LinkedIn s'il n'a pas de https
+        document.querySelectorAll('a[href*="linkedin.com"]').forEach(link => {
+            if (link.href && !link.href.startsWith('http')) {
+                link.href = 'https://' + link.getAttribute('href');
+            }
+        });
+        
+        // Amélioration de l'accessibilité
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mainMenu.classList.contains('active')) {
+                mainMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                const icon = menuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
